@@ -11,24 +11,31 @@ monthlyWage=0
 workedHrs=0
 maxHrs=100
 
+function getEmpHrs(){
+	local fullDay=$1
+	local halfday=$2
+	fullTimeCheck=$((RANDOM%2))
+	case $fullTimeCheck in
+		1)
+			empHrs=$fullDay
+			;;
+		0)
+			empHrs=$halfDay
+			;;
+	esac
+	echo $empHrs
+
+}
+
 for (( i=0; i< $daysInMonth; i++ ))
 do
 
 	if [[ $workedHrs -le $maxHrs ]]
 	then
 		isPresent=$((RANDOM%2))
-		fullTimeCheck=$((RANDOM%2))
-
 		if [[ $isPresent -eq 1 ]]
 		then
-			case $fullTimeCheck in
-				1)
-					empHrs=$fullDay
-					;;
-				0)
-					empHrs=$halfDay
-					;;
-			esac
+			empHrs=$( getEmpHrs $fullDay $halfDay )
 			workedHrs=$(($workedHrs+$empHrs))
 		fi
 	else
