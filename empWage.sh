@@ -17,11 +17,11 @@ do
 	if [[ $workedHrs -le $maxHrs ]]
 	then
 		isPresent=$((RANDOM%2))
-		workHrCheck=$((RANDOM%2))
+		fullTimeCheck=$((RANDOM%2))
 
 		if [[ $isPresent -eq 1 ]]
 		then
-			case $workHrCheck in
+			case $fullTimeCheck in
 				1)
 					empHrs=$fullDay
 					;;
