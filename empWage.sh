@@ -10,6 +10,7 @@ daysInMonth=20
 totalWage=0
 workedHrs=0
 maxHrs=100
+declare -A salaryDictionary
 
 function getEmpHrs(){
 	local fullDay=$1
@@ -42,6 +43,6 @@ do
 		break
 	fi
 	salary=$(($empHrs*$wagePerHr*$isPresent))
-	salaryArray[$day]=$salary
+	salaryDictionary["day "$day]=$salary
 	totalWage=$(($totalWage+$salary))
 done
