@@ -27,7 +27,7 @@ function getEmpHrs(){
 
 }
 
-for (( i=0; i< $daysInMonth; i++ ))
+for (( day=0; day< $daysInMonth; day++ ))
 do
 
 	if [[ $workedHrs -le $maxHrs ]]
@@ -42,5 +42,6 @@ do
 		break
 	fi
 	salary=$(($empHrs*$wagePerHr*$isPresent))
+	salaryArray[$day]=$salary
 	totalWage=$(($totalWage+$salary))
 done
