@@ -9,11 +9,13 @@ fullDay=8
 halfDay=4
 empHrs=0
 
-if [[ $workHrCheck -eq 1 ]]
-then
-	empHrs=$fullDay
-else
-	empHrs=$halfDay
-fi
+case $workHrCheck in
+	1)
+		empHrs=$fullDay
+		;;
+	0)
+		empHrs=$halfDay
+		;;
+esac
 
 salary=$(($empHrs*$wagePerHr*$empCheck))
