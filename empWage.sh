@@ -2,20 +2,30 @@
 
 echo "Welcome to Employee Wage Computation"
 
-empCheck=$((RANDOM%2))
-workHrCheck=$((RANDOM%2))
 wagePerHr=20
 fullDay=8
 halfDay=4
 empHrs=0
+daysInMonth=20
+monthlyWage=0
 
-case $workHrCheck in
-	1)
-		empHrs=$fullDay
-		;;
-	0)
-		empHrs=$halfDay
-		;;
-esac
+for (( i=0; i< $daysInMonth; i++ ))
+do
+	isPresent=$((RANDOM%2))
+	workHrCheck=$((RANDOM%2))
 
-salary=$(($empHrs*$wagePerHr*$empCheck))
+	if [[ $isPresent -eq 1 ]]
+	then
+		case $workHrCheck in
+			1)
+				empHrs=$fullDay
+				;;
+			0)
+				empHrs=$halfDay
+				;;
+		esac
+	fi
+
+	salary=$(($empHrs*$wagePerHr*$isPresent))
+	monthlyWage=$(($monthlyWage+$salary))
+done
