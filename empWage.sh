@@ -7,7 +7,7 @@ fullDay=8
 halfDay=4
 empHrs=0
 daysInMonth=20
-monthlyWage=0
+totalWage=0
 workedHrs=0
 maxHrs=100
 
@@ -42,5 +42,5 @@ do
 		break
 	fi
 	salary=$(($empHrs*$wagePerHr*$isPresent))
-	monthlyWage=$(($monthlyWage+$salary))
+	totalWage=$(($totalWage+$salary))
 done
